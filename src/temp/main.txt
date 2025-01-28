@@ -1,0 +1,42 @@
+Erreur : Line 1: Unexpected token
+Path : C:/Projets/Personnel/vite-app/src/main.jsx
+#################### AI Suggesting ####################
+Message : L'erreur "Unexpected token" sur la ligne 1 peut souvent être causée par une mauvaise déclaration de fonction ou un symbole inattendu. Dans le code fourni, vous avez une erreur dans l'utilisation de `MathTrunc`. Cela devrait être `Math.trunc`. 
+
+Voici la version corrigée :
+
+```javascript
+function toString(encoding, start, end) {
+  if (arguments.length === 0) {
+    return this.utf8Slice(0, this.length);
+  }
+
+  const len = this.length;
+
+  if (start <= 0)
+    start = 0;
+  else if (start >= len)
+    return '';
+  else
+    start = Math.trunc(start) || 0; // Corrigé ici
+
+  if (end === undefined || end > len)
+    end = len;
+  else
+    end = Math.trunc(end) || 0; // Corrigé ici
+
+  if (end <= start)
+    return '';
+
+  if (encoding === undefined)
+    return this.utf8Slice(start, end);
+
+  const ops = getEncodingOps(encoding);
+  if (ops === undefined)
+    throw new ERR_UNKNOWN_ENCODING(encoding);
+
+  return ops.slice(this, start, end);
+}
+```
+
+Assurez-vous également qu'il n'y a pas d'autres déclarations ou caractères invisibles avant la déclaration de la fonction dans votre fichier.
