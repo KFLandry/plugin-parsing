@@ -57,8 +57,7 @@ export default function pluginParser() {
 
 async function suggestSomething(errorMessage, content, filename) {
   const openai = new OpenAI({
-    apiKey:
-      "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",
+    apiKey: process.env["apiKey"],
   });
   const prompt = `Vous êtes un expert en JavaScript... "${errorMessage},
     voici le code ... ${content}...`;
